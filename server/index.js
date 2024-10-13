@@ -11,6 +11,7 @@ const app = express();
 const DB = "mongodb+srv://changesteam1234:ignacio123@cluster0.gb0xq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 
 // middleware
+app.use(express.json());
 app.use(authRouter);
 
 // conexiones
@@ -23,6 +24,6 @@ mongoose
     console.log(e);
   });
 
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log("Conexión al puerto " + PORT);
 });
