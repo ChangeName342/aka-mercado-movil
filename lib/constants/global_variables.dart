@@ -11,7 +11,7 @@ class GlobalVariables {
     ],
     stops: [0.5, 1.0],
   );
-
+  
   static const secondaryColor = Color.fromRGBO(220, 53, 69, 1);
   static const backgroundColor = Colors.white;
   static const Color greyBackgroundCOlor = Color(0xffebecee);

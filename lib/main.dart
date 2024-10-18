@@ -1,10 +1,16 @@
 import 'package:aka_mercado/constants/global_variables.dart';
 import 'package:aka_mercado/features/auth/screens/auth_screen.dart';
+import 'package:aka_mercado/providers/user_provider.dart';
 import 'package:aka_mercado/router.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider(
+      create: (context) => UserProvider(),
+    ),
+  ] ,child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {

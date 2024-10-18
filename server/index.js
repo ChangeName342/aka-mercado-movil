@@ -2,14 +2,16 @@
 const express = require("express");
 const mongoose = require("mongoose");
 
+
 // IMPORTACIONES DE OTROS ARCHIVOS
 const authRouter = require("./routes/auth");
 
 // INICIALIZACIÓN
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const app = express();
-const DB = "mongodb+srv://changesteam1234:ignacio123@cluster0.gb0xq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
-
+const DB = 
+  "mongodb+srv://<tuusuario>:<tucontraseña>@cluster0.gb0xq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+ 
 // middleware
 app.use(express.json());
 app.use(authRouter);

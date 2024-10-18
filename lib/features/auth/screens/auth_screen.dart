@@ -43,6 +43,14 @@ class _AuthScreenState extends State<AuthScreen> {
     );
   }
 
+  void signInUser() {
+    authService.signInUser(
+      context: context,
+      email: _emailController.text,
+      password: _passwordController.text,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -106,12 +114,12 @@ class _AuthScreenState extends State<AuthScreen> {
                         CustomButton(
                           text: 'Registrar',
                           onTap: () {
-                            if(_signUpFormKey.currentState!.validate()) {
+                            if (_signUpFormKey.currentState!.validate()) {
                               signUpUser();
                             }
                           },
-                          backgroundColor: const Color(0xFFDC3545), // Danger color (rojo)
-                          textColor: Colors.white, // Contrasting text color (blanco)
+                          backgroundColor: const Color(0xFFDC3545), 
+                          textColor: Colors.white, 
                         )
                       ],
                     ),
@@ -143,7 +151,7 @@ class _AuthScreenState extends State<AuthScreen> {
                   padding: const EdgeInsets.all(8),
                   color: GlobalVariables.backgroundColor,
                   child: Form(
-                    key: _signUpFormKey,
+                    key: _signInFormKey,
                     child: Column(
                       children: [
                         CustomTextfield(
@@ -158,9 +166,13 @@ class _AuthScreenState extends State<AuthScreen> {
                         const SizedBox(height: 10),
                         CustomButton(
                           text: 'Ingresar',
-                          onTap: () {},
-                          backgroundColor: const Color(0xFFDC3545), // Danger color (rojo)
-                          textColor: Colors.white, // Contrasting text color (blanco)
+                          onTap: () {
+                            if (_signInFormKey.currentState!.validate()) {
+                              signInUser();
+                            }
+                          },
+                          backgroundColor: const Color(0xFFDC3545), 
+                          textColor: Colors.white, 
                         )
                       ],
                     ),
