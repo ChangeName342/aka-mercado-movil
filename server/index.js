@@ -10,7 +10,7 @@ const authRouter = require("./routes/auth");
 const PORT = process.env.PORT || 3000;
 const app = express();
 const DB = 
-  "mongodb+srv://<tuusuario>:<tucontraseña>@cluster0.gb0xq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+  "mongodb+srv://ignacio123:tuki1234@cluster0.gb0xq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
  
 // middleware
 app.use(express.json());
