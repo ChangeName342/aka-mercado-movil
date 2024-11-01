@@ -1,5 +1,6 @@
 import 'package:aka_mercado/common/widgets/bottom_bar.dart';
 import 'package:aka_mercado/constants/global_variables.dart';
+import 'package:aka_mercado/features/admin/screens/admin_screen.dart';
 import 'package:aka_mercado/features/auth/screens/auth_screen.dart';
 import 'package:aka_mercado/features/auth/services/auth_service.dart';
 import 'package:aka_mercado/providers/user_provider.dart';
@@ -35,6 +36,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'AKÁ Mercado',
       theme: ThemeData(
         scaffoldBackgroundColor: GlobalVariables.backgroundColor,
@@ -50,8 +52,10 @@ class _MyAppState extends State<MyApp> {
       ),
       onGenerateRoute: (settings) => generateRoute(settings),
       home: Provider.of<UserProvider>(context).user.token.isNotEmpty
-       ? const BottomBar()
-       : const AuthScreen(), 
+          ? Provider.of<UserProvider>(context).user.type == 'user'
+              ? const BottomBar() 
+              : const AdminScreen()
+          : const AuthScreen(), 
     );
   }
 }
