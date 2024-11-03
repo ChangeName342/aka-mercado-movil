@@ -1,26 +1,28 @@
+import 'package:aka_mercado/common/widgets/custom_button.dart';
 import 'package:aka_mercado/constants/global_variables.dart';
+import 'package:aka_mercado/features/cart/widgets/cart_product.dart';
+import 'package:aka_mercado/features/cart/widgets/cart_subtotal.dart';
 import 'package:aka_mercado/features/home/widgets/address_box.dart';
-import 'package:aka_mercado/features/home/widgets/carousel_image.dart';
-import 'package:aka_mercado/features/home/widgets/deal_of_day.dart';
-import 'package:aka_mercado/features/home/widgets/top_categories.dart';
 import 'package:aka_mercado/features/search/screens/search_screen.dart';
+import 'package:aka_mercado/providers/user_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class HomeScreen extends StatefulWidget {
-  static const String routeName = '/home';
-  const HomeScreen({ Key? key }) : super(key: key);
+class CartScreen extends StatefulWidget {
+  const CartScreen({Key? key}) : super(key: key);
 
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  @override 
+  State<CartScreen> createState() => _CartScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _CartScreenState extends State<CartScreen> {
   void navigateToSearchScreen(String query) {
     Navigator.pushNamed(context, SearchScreen.routeName, arguments: query);
   }
 
-  @override
+  @override   
   Widget build(BuildContext context) {
+    final user = context.watch<UserProvider>().user;
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(60),
@@ -94,13 +96,32 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: SingleChildScrollView(
         child: Column(
-          children: const [
-            AddressBox(),
-            SizedBox(height: 10),
-            TopCategories(),
-            SizedBox(height: 10),
-            CarouselImage(),
-            DealOfDay(),
+          children: [
+            const AddressBox(),
+            const CartSubtotal(),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child:  CustomButton(
+                text: 'Comprar (${user.cart.length} items)',
+                onTap: () {},
+                color: Colors.red,
+              ),
+            ),
+            const SizedBox(height: 15),
+            Container(
+              color: Colors.black12.withOpacity(0.08),
+              height: 1,
+            ),
+            const SizedBox(height: 5),
+            ListView.builder(
+              itemCount: user.cart.length,
+              shrinkWrap: true,
+              itemBuilder: (context, index) {
+                return CartProduct(
+                  index: index,
+                );
+              },
+            ),
           ],
         ),
       ),

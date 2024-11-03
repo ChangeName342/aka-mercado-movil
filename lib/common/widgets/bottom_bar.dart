@@ -1,5 +1,6 @@
 import 'package:aka_mercado/constants/global_variables.dart';
 import 'package:aka_mercado/features/account/screens/account_screen.dart';
+import 'package:aka_mercado/features/cart/screens/cart_screen.dart';
 import 'package:aka_mercado/features/home/screens/home_screen.dart';
 import 'package:aka_mercado/providers/user_provider.dart';
 import 'package:flutter/material.dart';
@@ -22,9 +23,7 @@ class _BottomBarState extends State<BottomBar> {
   List<Widget> pages = [
     const HomeScreen(),
     const AccountScreen(),
-    const Center(
-      child: Text('Carrito de Compra'),
-    ),
+    const CartScreen(),
   ];
 
   void updatePage(int page) {
