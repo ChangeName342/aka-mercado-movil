@@ -30,6 +30,7 @@ class AuthService {
         address: '',
         type: '',
         token: '',
+        cart: [],
       );
 
       http.Response res = await http.post(
@@ -52,7 +53,7 @@ class AuthService {
     } catch (e) {
       showSnackBar(context, e.toString()); 
     }
-  }
+  } 
 
   // inicio de sesión
   void signInUser ({

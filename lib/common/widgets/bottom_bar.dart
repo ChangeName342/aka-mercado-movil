@@ -1,8 +1,10 @@
 import 'package:aka_mercado/constants/global_variables.dart';
 import 'package:aka_mercado/features/account/screens/account_screen.dart';
 import 'package:aka_mercado/features/home/screens/home_screen.dart';
+import 'package:aka_mercado/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:badges/badges.dart' as badges;
+import 'package:provider/provider.dart';
 
 class BottomBar extends StatefulWidget {
   static const String routeName = '/actual-home';
@@ -33,6 +35,8 @@ class _BottomBarState extends State<BottomBar> {
 
   @override
   Widget build(BuildContext context) {
+    final userCartLen = context.watch<UserProvider>().user.cart.length;
+
     return Scaffold(
       body: pages[_page],
       bottomNavigationBar: BottomNavigationBar(
@@ -98,7 +102,7 @@ class _BottomBarState extends State<BottomBar> {
                 ),
               ),
               child: badges.Badge(
-                badgeContent: const Text('2'),
+                badgeContent: Text(userCartLen.toString()),
                 badgeStyle: const badges.BadgeStyle(
                   elevation: 0,
                   badgeColor: Colors.white,
