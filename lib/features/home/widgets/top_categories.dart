@@ -1,8 +1,13 @@
 import 'package:aka_mercado/constants/global_variables.dart';
+import 'package:aka_mercado/features/home/screens/category_deals_screen.dart';
 import 'package:flutter/material.dart';
 
 class TopCategories extends StatelessWidget {
   const TopCategories ({Key? key}) : super(key: key);
+
+  void navigateToCategoryPage(BuildContext context, String category) {
+    Navigator.pushNamed(context, CategoryDealsScreen.routeName, arguments: category);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +18,12 @@ class TopCategories extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemExtent: 75,
         itemBuilder: (context, index) {
-          return Column(
+          return GestureDetector(
+            onTap: () => navigateToCategoryPage(
+              context,
+              GlobalVariables.categoryImages[index]['title']!
+            ),
+            child: Column(
             children: [
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -35,6 +45,7 @@ class TopCategories extends StatelessWidget {
                 ),
               ),
             ],
+            ),
           );
         },
       ),

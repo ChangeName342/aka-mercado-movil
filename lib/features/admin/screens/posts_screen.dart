@@ -1,4 +1,4 @@
-import 'package:aka_mercado/constants/loader.dart';
+import 'package:aka_mercado/common/widgets/loader.dart';
 import 'package:aka_mercado/features/account/widgets/single_product.dart';
 import 'package:aka_mercado/features/admin/screens/add_product_screen.dart';
 import 'package:aka_mercado/features/admin/services/admin_services.dart';
