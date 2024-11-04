@@ -146,7 +146,7 @@ class _CartProductState extends State<CartProduct> {
                       ),
                     ),
                     InkWell(
-                      onTap: () => increaseQuantity(product), 
+                     onTap: () => increaseQuantity(product), 
                      child: Container(
                         width: 35,
                         height: 32,
@@ -162,7 +162,6 @@ class _CartProductState extends State<CartProduct> {
               ),
             ],
           ),
-
         ),
       ],
     );
