@@ -1,5 +1,8 @@
+import 'package:aka_mercado/common/widgets/loader.dart';
 import 'package:aka_mercado/constants/global_variables.dart';
+import 'package:aka_mercado/features/account/services/account_services.dart';
 import 'package:aka_mercado/features/account/widgets/single_product.dart';
+import 'package:aka_mercado/models/order.dart';
 import 'package:flutter/material.dart';
 
 class Orders extends StatefulWidget {
@@ -10,29 +13,36 @@ class Orders extends StatefulWidget {
 }
 
 class _OrdersState extends State<Orders> {
+  List<Order>? orders;  
+  final AccountServices accountServices = AccountServices();
 
-  List list = [
-      'https://images.unsplash.com/photo-1719937206300-fc0dac6f8cac?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxfHx8ZW58MHx8fHx8',
-      'https://images.unsplash.com/photo-1719937206300-fc0dac6f8cac?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxfHx8ZW58MHx8fHx8',
-      'https://images.unsplash.com/photo-1719937206300-fc0dac6f8cac?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxfHx8ZW58MHx8fHx8',
-      'https://images.unsplash.com/photo-1719937206300-fc0dac6f8cac?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxfHx8ZW58MHx8fHx8',
+  @override
+  void initState() {
+    super.initState();
+    fetchOrders();
+  }
 
-  ];
+  void fetchOrders() async {
+    orders = await accountServices.fetchMyOrders(context: context);
+    setState(() {});
+  }
 
   @override 
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-              padding: const EdgeInsets.only(left: 15,),
-              child: const Text(
-                'Mis Pedidos',
-                style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w600,
+    return orders == null
+      ? const Loader()
+      : Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                padding: const EdgeInsets.only(left: 15,),
+                child: const Text(
+                  'Mis Pedidos',
+                  style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
             ),
@@ -59,10 +69,10 @@ class _OrdersState extends State<Orders> {
           child: 
             ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: list.length,
+              itemCount: orders!.length,
               itemBuilder: (context, index) {
                 return SingleProduct(
-                  image: list[index],
+                  image: orders![index].products[0].images[0],
                 );
             },
           ),
