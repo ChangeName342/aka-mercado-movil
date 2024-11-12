@@ -48,7 +48,7 @@ class _DealOfDayState extends State<DealOfDay> {
                       alignment: Alignment.topLeft,
                       padding: const EdgeInsets.only(left: 10, top: 15),
                       child: const Text(
-                        'Oferta del día',
+                        'Producto del Día',
                         style: TextStyle(fontSize: 20),
                       ),
                     ),
@@ -56,51 +56,6 @@ class _DealOfDayState extends State<DealOfDay> {
                       product!.images[0],
                       height: 235,
                       fit: BoxFit.fitHeight,
-                    ),
-                    Container(
-                      padding: const EdgeInsets.only(left: 15),
-                      alignment: Alignment.topLeft,
-                      child: const Text(
-                        '\$1000',
-                        style: TextStyle(fontSize: 18),
-                      ),
-                    ),
-                    Container(
-                      alignment: Alignment.topLeft,
-                      padding: const EdgeInsets.only(left: 15, top: 5, right: 40),
-                      child: const Text(
-                        'Ignacio',
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                    SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: product!.images
-                            .map(
-                              (e) => Image.network(
-                                e,
-                                fit: BoxFit.fitWidth,
-                                width: 100,
-                                height: 100,
-                              ),
-                            )
-                            .toList(),
-                      ),
-                    ),
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 15,
-                      ).copyWith(left: 15),
-                      alignment: Alignment.topLeft,
-                      child: Text(
-                        'Ver todas las ofertas',
-                        style: TextStyle(
-                          color: Colors.red[700],
-                        ),
-                      ),
                     ),
                   ],
                 ),

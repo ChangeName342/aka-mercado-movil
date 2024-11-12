@@ -2,6 +2,7 @@ import 'package:aka_mercado/common/widgets/loader.dart';
 import 'package:aka_mercado/constants/global_variables.dart';
 import 'package:aka_mercado/features/account/services/account_services.dart';
 import 'package:aka_mercado/features/account/widgets/single_product.dart';
+import 'package:aka_mercado/features/order_details/screens/order_details.dart';
 import 'package:aka_mercado/models/order.dart';
 import 'package:flutter/material.dart';
 
@@ -71,8 +72,17 @@ class _OrdersState extends State<Orders> {
               scrollDirection: Axis.horizontal,
               itemCount: orders!.length,
               itemBuilder: (context, index) {
-                return SingleProduct(
-                  image: orders![index].products[0].images[0],
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(
+                      context,
+                      OrderDetailScreen.routeName,
+                      arguments: orders![index],
+                    );
+                  }, 
+                  child: SingleProduct(
+                    image: orders![index].products[0].images[0],
+                  ),
                 );
             },
           ),

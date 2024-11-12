@@ -1,4 +1,6 @@
 import 'package:aka_mercado/constants/global_variables.dart';
+import 'package:aka_mercado/features/admin/screens/analytics_screen.dart';
+import 'package:aka_mercado/features/admin/screens/orders_screen.dart';
 import 'package:aka_mercado/features/admin/screens/posts_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -16,12 +18,8 @@ class _AdminScreenState extends State<AdminScreen> {
 
   List<Widget> pages = [
     const PostsScreen(),
-    const Center(
-      child: Text('Análisis'),
-    ),
-    const Center(
-      child: Text('Carrito de Compra'),
-    ),
+    const AnalyticsScreen(),
+    const OrdersScreen(),
   ];
 
   void updatePage(int page) {
