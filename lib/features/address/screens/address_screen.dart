@@ -1,5 +1,3 @@
-import 'package:aka_mercado/common/widgets/bottom_bar.dart';
-import 'package:aka_mercado/common/widgets/custom_button.dart';
 import 'package:aka_mercado/common/widgets/custom_textfield.dart';
 import 'package:aka_mercado/constants/global_variables.dart';
 import 'package:aka_mercado/constants/utils.dart';

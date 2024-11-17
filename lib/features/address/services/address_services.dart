@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:aka_mercado/constants/error_handling.dart';
 import 'package:aka_mercado/constants/global_variables.dart';
@@ -7,7 +6,6 @@ import 'package:aka_mercado/constants/utils.dart';
 import 'package:aka_mercado/models/product.dart';
 import 'package:aka_mercado/models/user.dart';
 import 'package:aka_mercado/providers/user_provider.dart';
-import 'package:cloudinary_public/cloudinary_public.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';

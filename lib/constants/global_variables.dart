@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-String uri = 'https://aka-mercado-95b542d0e218.herokuapp.com/';
+String uri = 'http://192.168.0.21:3000';
 
 class GlobalVariables {
   // COLORS
@@ -11,7 +11,7 @@ class GlobalVariables {
     ],
     stops: [0.5, 1.0],
   );
-  
+
   static const secondaryColor = Color.fromRGBO(220, 53, 69, 1);
   static const backgroundColor = Colors.white;
   static const Color greyBackgroundCOlor = Color(0xffebecee);
