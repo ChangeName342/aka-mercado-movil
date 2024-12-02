@@ -39,7 +39,7 @@ class _AuthScreenState extends State<AuthScreen> {
       context: context,
       email: _emailController.text,
       password: _passwordController.text,
-      name: _nameController.text
+      name: _nameController.text,
     );
   }
 
@@ -69,8 +69,8 @@ class _AuthScreenState extends State<AuthScreen> {
               ),
               ListTile(
                 tileColor: _auth == Auth.signup
-                  ? GlobalVariables.backgroundColor
-                  : GlobalVariables.greyBackgroundCOlor,
+                    ? GlobalVariables.backgroundColor
+                    : GlobalVariables.greyBackgroundCOlor,
                 title: const Text(
                   'Registrar Cuenta',
                   style: TextStyle(
@@ -106,7 +106,7 @@ class _AuthScreenState extends State<AuthScreen> {
                           hintText: 'E-mail',
                         ),
                         const SizedBox(height: 10),
-                        CustomTextfield(
+                        PasswordTextField(
                           controller: _passwordController,
                           hintText: 'Contraseña',
                         ),
@@ -118,17 +118,17 @@ class _AuthScreenState extends State<AuthScreen> {
                               signUpUser();
                             }
                           },
-                          backgroundColor: const Color(0xFFDC3545), 
-                          textColor: Colors.white, 
+                          backgroundColor: const Color(0xFFDC3545),
+                          textColor: Colors.white,
                         )
                       ],
                     ),
                   ),
-                ), 
+                ),
               ListTile(
                 tileColor: _auth == Auth.signin
-                  ? GlobalVariables.backgroundColor
-                  : GlobalVariables.greyBackgroundCOlor,
+                    ? GlobalVariables.backgroundColor
+                    : GlobalVariables.greyBackgroundCOlor,
                 title: const Text(
                   'Iniciar Sesión',
                   style: TextStyle(
@@ -159,7 +159,7 @@ class _AuthScreenState extends State<AuthScreen> {
                           hintText: 'E-mail',
                         ),
                         const SizedBox(height: 10),
-                        CustomTextfield(
+                        PasswordTextField(
                           controller: _passwordController,
                           hintText: 'Contraseña',
                         ),
@@ -171,8 +171,8 @@ class _AuthScreenState extends State<AuthScreen> {
                               signInUser();
                             }
                           },
-                          backgroundColor: const Color(0xFFDC3545), 
-                          textColor: Colors.white, 
+                          backgroundColor: const Color(0xFFDC3545),
+                          textColor: Colors.white,
                         )
                       ],
                     ),
@@ -180,6 +180,48 @@ class _AuthScreenState extends State<AuthScreen> {
                 ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class PasswordTextField extends StatefulWidget {
+  final TextEditingController controller;
+  final String hintText;
+
+  const PasswordTextField({
+    Key? key,
+    required this.controller,
+    required this.hintText,
+  }) : super(key: key);
+
+  @override
+  _PasswordTextFieldState createState() => _PasswordTextFieldState();
+}
+
+class _PasswordTextFieldState extends State<PasswordTextField> {
+  bool _obscureText = true;
+
+  void _toggleVisibility() {
+    setState(() {
+      _obscureText = !_obscureText;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      controller: widget.controller,
+      obscureText: _obscureText,
+      decoration: InputDecoration(
+        hintText: widget.hintText,
+        border: const OutlineInputBorder(),
+        suffixIcon: IconButton(
+          icon: Icon(
+            _obscureText ? Icons.visibility_off : Icons.visibility,
+          ),
+          onPressed: _toggleVisibility,
         ),
       ),
     );
